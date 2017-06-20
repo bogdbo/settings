@@ -1,0 +1,20 @@
+colorscheme badwolf
+set guifont=Consolas:h11:cANSI
+set lines=40 columns=180
+syntax enable
+set tabstop=2
+set softtabstop=2
+set expandtab       " tabs are spaces
+set number
+set showcmd
+set cursorline
+filetype indent on
+set wildmenu
+set showmatch
+set incsearch
+set hlsearch
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap j gj
+nnoremap k gk
