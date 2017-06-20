@@ -1,0 +1,32 @@
+[credential]
+	helper = wincred
+[push]
+	default = simple
+[difftool]
+   prompt = true
+[alias]
+	ec = config --global -e
+	unstage = reset HEAD --
+	aliases = config --get-regexp ^alias\\.
+    l =  log --color --oneline --pretty=format:'%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(18)%aN%Cred%d %Creset%s' --abbrev-commit --date=relative
+	ll = log --color --pretty=format:'%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s' --abbrev-commit --date=relative --decorate --name-only
+	dt = diftool
+	s = status -s
+	co = checkout
+	cob = checkout -b
+	bl = branch -l
+	bd = branch -d
+	di = diff --word-diff --diff-filter=M
+	ci = commit
+	su = submodule update --recursive
+	dt = difftool --diff-filter=M -y
+	whatadded = log --diff-filter=A
+[core]
+	commentchar = *
+[user]
+	name = Bogdan Boiculese
+	email = bogdan.boiculese@gmail.com
+[difftool "bc3"]
+	path = c:/Program Files/Beyond Compare 4/bcomp.exe
+[diff]
+	tool = bc3
