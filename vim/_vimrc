@@ -1,20 +1,58 @@
-colorscheme badwolf
-set guifont=Consolas:h11:cANSI
-set lines=40 columns=180
+if has("gui_running") 
+  colorscheme hybrid
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
+  winpos 220 80
+endif
+
 syntax enable
+filetype plugin on
+
+set guifont=Consolas:h10:cANSI
+set lines=50 columns=180
+set backspace=2
 set tabstop=2
 set softtabstop=2
-set expandtab       " tabs are spaces
+set shiftwidth=2
+set scrolloff=3  
+set expandtab 
 set number
 set showcmd
 set cursorline
-filetype indent on
 set wildmenu
 set showmatch
 set incsearch
-set hlsearch
+set ignorecase
+set vb "disable beeping
 
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR> 
+set laststatus=2
+set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
+
 nnoremap j gj
 nnoremap k gk
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number norelativenumber
+  else
+    set number relativenumber
+  endif
+endfunc
+
+nnoremap <leader>n :call NumberToggle()<cr>
+
+call plug#begin('~/vimfiles/plugged')
+  Plug 'https://github.com/kien/ctrlp.vim'
+  Plug 'https://github.com/ervandew/supertab'
+  Plug 'https://github.com/easymotion/vim-easymotion'
+call plug#end()
+
+
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+let g:ctrlp_clear_cache_on_exit = 0
+
+
