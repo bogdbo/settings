@@ -1,0 +1,57 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.incsearch": true,
+    "vim.useCtrlKeys": false,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":nohl"
+                }
+            ]
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-w>": false,
+        "<C-k>": false,
+        "<C-x>": false
+    },
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": true,
+    "workbench.iconTheme": "vs-seti",
+    "javascript.validate.enable": false,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "window.openFilesInNewWindow": "off"
+}
