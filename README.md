@@ -5,7 +5,8 @@ Because there are too many VMs...
 
 Restart powershell and run:
 
-```# General
+```
+# General
 choco install chrome -y
 choco install spotify -y
 choco install 7zip -y
@@ -15,9 +16,11 @@ choco install autohotkey.install -y
 choco install windirstat -y
 choco install greenshot -y
 choco install qbittorrent -y
-choco install plexmediaserver -y```
+choco install plexmediaserver -y
+```
 
-```# Programming
+```
+# Programming
 choco install nodejs -y
 choco install git.install -y
 choco install vim -y
@@ -26,4 +29,5 @@ choco install poshgit -y
 choco install visualstudiocode -y
 choco install beyondcompare -y
 choco install rdcman -y
-choco install dotpeek -y```
+choco install dotpeek -y
+```
