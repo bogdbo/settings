@@ -54,5 +54,3 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 let g:ctrlp_clear_cache_on_exit = 0
-
-
