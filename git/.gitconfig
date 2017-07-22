@@ -23,6 +23,7 @@
 	whatadded = log --diff-filter=A
 [core]
 	commentchar = *
+	editor = vim -u NONE
 [user]
 	name = Bogdan Boiculese
 	email = bogdan.boiculese@gmail.com
