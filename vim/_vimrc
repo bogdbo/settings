@@ -4,14 +4,14 @@ if has("gui_running")
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
+  set guifont=Consolas:h10:cANSI
+  set lines=50 columns=180
   winpos 220 80
 endif
 
 syntax enable
 filetype plugin on
 
-set guifont=Consolas:h10:cANSI
-set lines=50 columns=180
 set backspace=2
 set tabstop=2
 set softtabstop=2
