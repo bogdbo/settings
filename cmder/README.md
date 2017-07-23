@@ -1,3 +1,5 @@
+## Posh-Git extra settings
+
 ### Warning: Check compatibility as this might be deprecated on newer installs (Get-Module)
 
 Location: `C:\Users\username\Documents\WindowsPowerShell\Modules\posh-git`
