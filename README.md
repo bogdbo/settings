@@ -30,4 +30,5 @@ choco install visualstudiocode -y
 choco install beyondcompare -y
 choco install rdcman -y
 choco install dotpeek -y
+choco install visualstudiocode -y
 ```
