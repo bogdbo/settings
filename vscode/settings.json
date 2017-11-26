@@ -1,7 +1,15 @@
 // Place your settings in this file to overwrite the default settings
 {
+    "workbench.colorTheme": "One Monokai",
     "vim.easymotion": true,
-    "vim.useSystemClipboard": true,
+	"vim.easymotionKeys": "1234hklyuiopnmqwertzxcvbasdgjf",
+    "vim.easymotionMarkerBackgroundColor": "blue",
+    "vim.easymotionMarkerForegroundColorOneChar": "fuchsia",
+    "vim.easymotionMarkerForegroundColorTwoChar": "fuchsia",
+    "vim.easymotionMarkerWidthPerChar": 8,
+    "vim.easymotionMarkerYOffset": 5,
+    "vim.easymotionMarkerHeight": 14,
+    "vim.useSystemClipboard": false,
     "vim.incsearch": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
@@ -16,35 +24,12 @@
             ]
         }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "d"
-            ],
-            "after": [
-                "d",
-                "d"
-            ]
-        },
-        {
-            "before": [
-                "<C-n>"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": ":nohl"
-                }
-            ]
-        }
-    ],
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-f>": false,
         "<C-c>": false,
         "<C-v>": false,
-        "<C-w>": false,
+        "<C-w>": true,
         "<C-k>": false,
         "<C-x>": false
     },
@@ -52,6 +37,22 @@
     "workbench.activityBar.visible": true,
     "workbench.iconTheme": "vs-seti",
     "javascript.validate.enable": false,
-    "vim.disableAnnoyingNeovimMessage": true,
-    "window.openFilesInNewWindow": "off"
+    "window.openFilesInNewWindow": "off",
+    "editor.tabSize": 2,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "editor.renderWhitespace": "all",
+    "beautify.tabSize": 2,
+    "workbench.panel.location": "bottom",
+    "window.menuBarVisibility": "toggle",
+    "typescriptHero.resolver.ignorePatterns": [
+        "build",
+        "out",
+        "dist",
+        "wwwroot"
+    ],
+    "typescriptHero.resolver.multiLineWrapThreshold": 120,
+    "typescriptHero.resolver.promptForSpecifiers": false,
+    "gitlens.annotations.file.gutter.format": "${author} • ${message|40?} ${ago|14-}"
 }
