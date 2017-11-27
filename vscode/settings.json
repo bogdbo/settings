@@ -31,7 +31,8 @@
         "<C-v>": false,
         "<C-w>": true,
         "<C-k>": false,
-        "<C-x>": false
+        "<C-x>": false,
+        "<C-b>": false
     },
     "window.zoomLevel": 0,
     "workbench.activityBar.visible": true,
@@ -49,10 +50,20 @@
     "typescriptHero.resolver.ignorePatterns": [
         "build",
         "out",
-        "dist",
-        "wwwroot"
+        "dist"
     ],
     "typescriptHero.resolver.multiLineWrapThreshold": 120,
     "typescriptHero.resolver.promptForSpecifiers": false,
-    "gitlens.annotations.file.gutter.format": "${author} • ${message|40?} ${ago|14-}"
+    "gitlens.annotations.file.gutter.format": "${author} • ${message|40?} ${ago|14-}",
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "emmet.showExpandedAbbreviation": "never"
 }
