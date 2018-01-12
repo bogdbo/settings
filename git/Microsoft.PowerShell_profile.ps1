@@ -16,7 +16,13 @@ Set-Alias -Name l -Value git-log -Option AllScope -Force
 function git-commit { $branch = (git rev-parse --abbrev-ref HEAD); $task = $branch -replace '(.+?)/(.+?)/(\d+)', '#$3'; $args[0] += "`r`n`r`n$task"; git commit -m $args }
 Set-Alias -Name c -Value git-commit -Option AllScope -Force
 
-function git-branchlist { git branch -l } 
+function git-branchlist { 
+	if ($args -and $args[0]) {
+ 		git branch -l | Select-String -pattern $args[0]
+	} else {
+ 		git branch -l 
+	}
+} 
 Set-Alias -Name bl -Value git-branchlist -Option AllScope -Force
 
 function git-status { git status -s }
