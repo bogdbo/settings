@@ -4,7 +4,17 @@ Write-Host "Git aliases activated"
 function git-pull { git pull }
 Set-Alias -Name pl -Value git-pull -Option AllScope -Force
 
-function git-checkout { git checkout $args }
+function git-checkout { 
+	if ($args[0] -eq "."`
+		-or $args[0] -eq "-"`
+		-or $args[0].Contains("develop")`
+		-or $args[0].Contains("master")`
+		-or $args[0].Contains("release")`
+		-or $args[0].Contains("/")`
+		-or $args[0].StartsWith("*")) {
+		git checkout $args
+	}
+}
 Set-Alias -Name co -Value git-checkout -Option AllScope -Force
 
 function git-checkoutbranch { git checkout -b $args }
@@ -16,6 +26,9 @@ Set-Alias -Name l -Value git-log -Option AllScope -Force
 function git-commit { $branch = (git rev-parse --abbrev-ref HEAD); $task = $branch -replace '(.+?)/(.+?)/(\d+)', '#$3'; $args[0] += "`r`n`r`n$task"; git commit -m $args }
 Set-Alias -Name c -Value git-commit -Option AllScope -Force
 
+function git-commit-amend { git commit --amend --no-edit }
+Set-Alias -name ca -Value git-commit-amend -Option AllScope -Force
+
 function git-branchlist { 
 	if ($args -and $args[0]) {
  		git branch -l | Select-String -pattern $args[0]
@@ -25,7 +38,7 @@ function git-branchlist {
 } 
 Set-Alias -Name bl -Value git-branchlist -Option AllScope -Force
 
-function git-status { git status -s }
+function git-status { git status -s $args }
 Set-Alias -Name s -Value git-status -Option AllScope -Force
 
 function git-push { git push -u origin (git rev-parse --abbrev-ref HEAD) }
