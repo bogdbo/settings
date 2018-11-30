@@ -5,28 +5,45 @@ function git-pull { git pull }
 Set-Alias -Name pl -Value git-pull -Option AllScope -Force
 
 function git-checkout { 
-	if ($args[0] -eq "."`
-		-or $args[0] -eq "-"`
-		-or $args[0].Contains("develop")`
-		-or $args[0].Contains("master")`
-		-or $args[0].Contains("release")`
-		-or $args[0].Contains("/")`
-		-or $args[0].StartsWith("*")) {
-		git checkout $args
-	}
+  if ($args[0] -eq "."`
+      -or $args[0] -eq "-"`
+      -or $args[0].Contains("develop")`
+      -or $args[0].Contains("master")`
+      -or $args[0].Contains("release")`
+      -or $args[0].Contains("/")`
+      -or $args[0].StartsWith("*")) {
+    git checkout $args
+  } else {
+    $result = git-branchlist $args[0]
+      if ($result -and $result.Matches -and $result.Matches[0]) {
+        git checkout $result.ToString().Trim()
+      } else {
+        Write-Host "Cannot find any branch containing '$($args[0])'" -f red
+      }
+  }
 }
 Set-Alias -Name co -Value git-checkout -Option AllScope -Force
 
 function git-checkoutbranch { git checkout -b $args }
 Set-ALias -Name cob -Value git-checkoutbranch -Option AllScope -Force
 
-function git-log { git log --color --oneline --pretty=format:'%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(18)%aN%Cred%d %Creset%s' --abbrev-commit --date=relative }
+function git-log { git log --color --oneline --pretty=format:'%C(yellow)%h %Cblue%>(12)%ad %Cred%d %Creset%s' --abbrev-commit --date=relative }
 Set-Alias -Name l -Value git-log -Option AllScope -Force
 
-function git-commit { $branch = (git rev-parse --abbrev-ref HEAD); $task = $branch -replace '(.+?)/(.+?)/(\d+)', '#$3'; $args[0] += "`r`n`r`n$task"; git commit -m $args }
+function git-commit {
+  $branch = (git rev-parse --abbrev-ref HEAD); 
+  if ($branch -match '(.+?)/(.+?)/(\d+)') {
+    $task = $branch -replace '(.+?)/(.+?)/(\d+)', '#$3'; 
+    $args[0] += "`r`n`r`n$task"; 
+  } 
+  git commit -m $args 
+}
 Set-Alias -Name c -Value git-commit -Option AllScope -Force
 
-function git-commit-amend { git commit --amend --no-edit }
+function git-commit-amend { 
+  git commit --amend --no-edit;
+  git push -f
+}
 Set-Alias -name ca -Value git-commit-amend -Option AllScope -Force
 
 function git-branchlist { 
