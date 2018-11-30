@@ -1,13 +1,15 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
- *  * License, v. 2.0. If a copy of the MPL was not distributed with this
- *   * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. 
+ */
 
 /*
- *  * This style will hide the tab bar and merge the title bar with the navigation bar. For Windows
- *   * Make sure "Title Bar" is unchecked in customize menu.
- *    *
- *     * Contributor(s): Ivan0xFF
- *      */
+ * This style will hide the tab bar and merge the title bar with the navigation bar. For Windows
+ * Make sure "Title Bar" is unchecked in customize menu.
+ * 
+ * Contributor(s): Ivan0xFF
+ *  
+ */
 
 #TabsToolbar {
   visibility: collapse !important;
@@ -17,9 +19,12 @@
   height: 40px !important;
 }
 
+#navigator-toolbox {
+  margin-top: 9px;
+}
+
+
 #nav-bar {
-  margin-top: -40px;
-  margin-right: 140px;
   box-shadow: none !important;
 }
 
@@ -45,4 +50,10 @@
 
 #sidebar-splitter {
   border: hidden;
+}
+
+/* Reduce the "white flash" in new tabs */
+browser[type="content-primary"], 
+browser[type="content"] {
+  background: black !important;
 }
