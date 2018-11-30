@@ -15,17 +15,17 @@ function git-checkout {
     git checkout $args
   } else {
     $result = git-branchlist $args[0]
-      if ($result -and $result.Matches -and $result.Matches[0]) {
-        git checkout $result.ToString().Trim()
-      } else {
-        Write-Host "Cannot find any branch containing '$($args[0])'" -f red
-      }
+    if ($result -and $result.Matches -and $result.Matches[0]) {
+      git checkout $result.ToString().Trim()
+    } else {
+      Write-Host "Cannot find any branch containing '$($args[0])'" -f red
+    }
   }
 }
 Set-Alias -Name co -Value git-checkout -Option AllScope -Force
 
 function git-checkoutbranch { git checkout -b $args }
-Set-ALias -Name cob -Value git-checkoutbranch -Option AllScope -Force
+Set-Alias -Name cob -Value git-checkoutbranch -Option AllScope -Force
 
 function git-log { git log --color --oneline --pretty=format:'%C(yellow)%h %Cblue%>(12)%ad %Cred%d %Creset%s' --abbrev-commit --date=relative }
 Set-Alias -Name l -Value git-log -Option AllScope -Force
@@ -47,11 +47,11 @@ function git-commit-amend {
 Set-Alias -name ca -Value git-commit-amend -Option AllScope -Force
 
 function git-branchlist { 
-	if ($args -and $args[0]) {
- 		git branch -l | Select-String -pattern $args[0]
-	} else {
- 		git branch -l 
-	}
+  if ($args -and $args[0]) {
+    git branch -l | Select-String -pattern $args[0]
+  } else {
+    git branch -l 
+  }
 } 
 Set-Alias -Name bl -Value git-branchlist -Option AllScope -Force
 
