@@ -33,7 +33,7 @@ Set-Alias -Name l -Value git-log -Option AllScope -Force
 function git-commit {
   $branch = (git rev-parse --abbrev-ref HEAD); 
   if ($branch -match '(.+?)/(.+?)/(\d+)') {
-    $task = $branch -replace '(.+?)/(.+?)/(\d+)', '#$3'; 
+    $task = $branch -replace '(.+?)/(.+?)/(\d+)', 'https://doctorlink.atlassian.net/browse/DL-$3'; 
     $args[0] += "`r`n`r`n$task"; 
   } 
   git commit -m $args 
@@ -69,5 +69,11 @@ Set-Alias -Name dt -Value git-diff -Option AllScope -Force
 
 function git-diffcached { git difftool --diff-filter=M -y --cached }
 Set-Alias -Name dtc -Value git-diffcached -Option AllScope -Force
+
+function git-sync {
+  git fetch upstream
+  git merge upstream/master
+}
+Set-Alias -Name gs -Value git-sync -Option AllScope -Force
 
 # END Custom Git aliases
