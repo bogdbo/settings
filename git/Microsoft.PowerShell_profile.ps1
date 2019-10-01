@@ -81,5 +81,6 @@ $GitPromptSettings.EnableWindowTitle = ''
 $GitPromptSettings.DefaultPromptPath = '$($(pwd).Path.Split("\")[-1])'
 $GitPromptSettings.BeforeText = ' '
 $GitPromptSettings.AfterText = ' '
-$GitPromptSettings.DefaultPromptSuffix = '$([char]::ConvertFromUtf32(0x276F)) '
+$GitPromptSettings.DefaultPromptPrefix = '`e[94m$([DateTime]::Now.ToString("HH:mm:ss"))`e[0m '
+$GitPromptSettings.DefaultPromptSuffix = '`n'
 clear
