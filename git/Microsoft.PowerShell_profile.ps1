@@ -1,5 +1,5 @@
 # Custom Git aliases
-Write-Host "Git aliases activated"
+clear
 
 function git-pull { git pull }
 Set-Alias -Name pl -Value git-pull -Option AllScope -Force
@@ -76,4 +76,10 @@ function git-sync {
 }
 Set-Alias -Name gs -Value git-sync -Option AllScope -Force
 
-# END Custom Git aliases
+import-module posh-git
+$GitPromptSettings.EnableWindowTitle = ''
+$GitPromptSettings.DefaultPromptPath = '$($(pwd).Path.Split("\")[-1])'
+$GitPromptSettings.BeforeText = ' '
+$GitPromptSettings.AfterText = ' '
+$GitPromptSettings.DefaultPromptSuffix = '$([char]::ConvertFromUtf32(0x276F)) '
+clear
