@@ -78,9 +78,8 @@ Set-Alias -Name gs -Value git-sync -Option AllScope -Force
 
 import-module posh-git
 $GitPromptSettings.EnableWindowTitle = ''
-$GitPromptSettings.DefaultPromptPath = '$($(pwd).Path.Split("\")[-1])'
+$GitPromptSettings.DefaultPromptPath = '`e[37;1m$($(pwd).Path.Split("\")[-1])`e[0m'
 $GitPromptSettings.BeforeText = ' '
 $GitPromptSettings.AfterText = ' '
-$GitPromptSettings.DefaultPromptPrefix = '`e[94m$([DateTime]::Now.ToString("HH:mm:ss"))`e[0m '
-$GitPromptSettings.DefaultPromptSuffix = '`n'
-clear
+$GitPromptSettings.DefaultPromptSuffix = '`e[94m$([DateTime]::Now.ToString("HH:mm:ss"))`e[0m`n'
+
