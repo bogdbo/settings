@@ -5,20 +5,18 @@ function git-pull { git pull }
 Set-Alias -Name pl -Value git-pull -Option AllScope -Force
 
 function git-checkout { 
-  if ($args[0] -eq "."`
-      -or $args[0] -eq "-"`
-      -or $args[0].Contains("develop")`
-      -or $args[0].Contains("master")`
-      -or $args[0].Contains("release")`
-      -or $args[0].Contains("/")`
-      -or $args[0].StartsWith("*")) {
+  $firstArg = $args[0].ToString();
+  if ((Test-Path $firstArg) -eq $true `
+      -or $firstArg -eq "-"`
+      -or $firstArg.Contains("develop")`
+      -or $firstArg.StartsWith("*")) {
     git checkout $args
   } else {
     $result = git-branchlist $args[0]
     if ($result -and $result.Matches -and $result.Matches[0]) {
       git checkout $result.ToString().Trim()
     } else {
-      Write-Host "Cannot find any branch containing '$($args[0])'" -f red
+      Write-Host "Cannot find any branch containing '$firstArg'" -f red
     }
   }
 }
@@ -32,9 +30,10 @@ Set-Alias -Name l -Value git-log -Option AllScope -Force
 
 function git-commit {
   $branch = (git rev-parse --abbrev-ref HEAD); 
-  if ($branch -match '(.+?)/(.+?)/(\d+)') {
-    $task = $branch -replace '(.+?)/(.+?)/(\d+)', 'https://doctorlink.atlassian.net/browse/DL-$3'; 
-    $args[0] += "`r`n`r`n$task"; 
+  if ($branch -match '(.+?)/(\d+)') {
+    $task = $branch -replace '(.+?)/(\d+)', '$2'; 
+    $args[0] = ("#" + "$task" + ": " + $args[0]); 
+    write-output $args[0]
   } 
   git commit -m $args 
 }
